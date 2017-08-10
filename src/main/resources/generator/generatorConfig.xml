@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+  <context id="Oracle" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+    <property name="javaFileEncoding" value="UTF-8"/>
+
+    <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+      <property name="mappers" value="com.makenv.utils.MyMapper"/>
+      <property name="caseSensitive" value="true"/>
+      <property name="beginningDelimiter" value=""/>
+      <property name="endingDelimiter" value=""/>
+    </plugin>
+
+    <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+                    connectionURL="jdbc:oracle:thin:@192.168.1.103:1521:devecloud"
+                    userId="MAKE"
+                    password="make#123">
+    </jdbcConnection>
+
+    <javaModelGenerator targetPackage="com.makenv.model" targetProject="./src/main/java"/>
+
+    <sqlMapGenerator targetPackage="mapper" targetProject="./src/main/resources"/>
+
+    <javaClientGenerator targetPackage="com.makenv.mapper" targetProject="./src/main/java" type="XMLMAPPER"/>
+
+    <table tableName="polist_user" mapperName="PolistUserMapper">
+      <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+      <!--<generatedKey column="id" sqlStatement="Oracle" identity="true"/>-->
+      <generatedKey column="id" sqlStatement="select {1}_SEQ.nextval from dual" identity="false" type="pre"/>
+    </table>
+  </context>
+</generatorConfiguration>

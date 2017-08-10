@@ -1,0 +1,9 @@
+/*.iws
+/*.ipr
+/*.iml
+/**/*.iml
+/**/target
+/.idea
+MANIFEST.MF
+/target
+/server_log
